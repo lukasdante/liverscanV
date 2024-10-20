@@ -1,0 +1,21 @@
+@import './vars';
+
+@mixin flex-center($flex_dir: row) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $flex_dir;
+}
+
+@mixin viewport-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+@mixin viewport-center-child {
+    max-width: $max-width-viewport;
+    width: 100vw;
+}
+
