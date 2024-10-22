@@ -1,5 +1,61 @@
 {% extends 'main/main.html' %}
 {% load static %}
 {% block content %}
-    
+<div class="results-container">
+    <div class="results-main">
+        <div class="results-title">
+            <div class="results-intro">We're sorry to inform you that</div>
+            <div class="results-diagnosis">You have been diagnosed with a <span class="diagnosis-final">liver tumor</span>.</div>
+        </div>
+        <div class="results-body">
+            <div class="results-images">
+                <div class="results-image-block">
+                    <div class="results-image">
+                        <img class="results-image-image" src="{% static 'img/ct_sample.png' %}" alt="unenhanced">
+                    </div>
+                    <div class="results-text">unenhanced</div>
+                </div>
+                <div class="results-image-block">
+                    <div class="results-image">
+                        <img class="results-image-image" src="{% static 'img/ct_sample.png' %}" alt="arterial">
+                    </div>
+                    <div class="results-text">arterial</div>
+                </div>
+                <div class="results-image-block">
+                    <div class="results-image">
+                        <img class="results-image-image" src="{% static 'img/ct_sample.png' %}" alt="portal venous">
+                    </div>
+                    <div class="results-text">portal venous</div>
+                </div>
+            </div>
+            <div class="results-details">
+                <div class="results-details-title">Details</div>
+                <hr>
+                <div class="results-details-block">
+                    <div class="results-details-item">
+                        <div class="results-details-item-name">Initial Diagnosis:</div>
+                        <div class="results-details-item-value">tumor</div>
+                    </div>
+                    <div class="results-details-item">
+                        <div class="results-details-item-name">Final Diagnosis:</div>
+                        <div class="results-details-item-value">tumor</div>
+                    </div>
+                    <div class="results-details-item">
+                        <div class="results-details-item-name">Date of Diagnosis:</div>
+                        <div class="results-details-item-value">October 15, 2024</div>
+                    </div>
+                    <div class="results-details-item">
+                        <div class="results-details-item-name">Area of Diagnosis:</div>
+                        <div class="results-details-item-value">16 cm&sup2;</div>
+                    </div>
+                    <div class="results-details-item">
+                        <div class="results-details-item-name">Additional Remarks:</div>
+                        <div class="results-details-item-value">A large tumor mass is found in your liver. Please visit the hospital immediately once you received the results.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 {% endblock %}

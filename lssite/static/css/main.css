@@ -4,6 +4,7 @@
   padding: 0;
   font-family: "Geologica", sans-serif;
   color: #272727;
+  overflow-x: hidden !important;
 }
 
 a {
@@ -14,6 +15,14 @@ a {
 a:hover, a:focus, a:active {
   text-decoration: none;
   color: inherit;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .main-svg, .sub-svg {
@@ -33,6 +42,7 @@ a:hover, a:focus, a:active {
 .navbar-container .navbar-main {
   max-width: 1280px;
   width: 100vw;
+  overflow-x: hidden;
   display: flex;
   justify-content: flex-end;
   font-weight: 400;
@@ -78,6 +88,7 @@ a:hover, a:focus, a:active {
 .footer-container .footer-main {
   max-width: 1280px;
   width: 100vw;
+  overflow-x: hidden;
 }
 .footer-container .footer-main > div {
   color: white;
@@ -117,6 +128,7 @@ a:hover, a:focus, a:active {
 .main-content .intro-div {
   max-width: 1280px;
   width: 100vw;
+  overflow-x: hidden;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -154,6 +166,7 @@ a:hover, a:focus, a:active {
 .main-content .stats-container .stats-main {
   max-width: 1280px;
   width: 100vw;
+  overflow-x: hidden;
   display: flex;
   justify-content: space-evenly;
 }
@@ -177,6 +190,7 @@ a:hover, a:focus, a:active {
 .main-content .contributors-container .contributors-main {
   max-width: 1280px;
   width: 100vw;
+  overflow-x: hidden;
 }
 .main-content .contributors-container .contributors-main .contributor-title {
   font-size: 75px;
@@ -414,4 +428,110 @@ a:hover, a:focus, a:active {
   background-position: center;
   background-repeat: no-repeat;
   border: none;
+}
+
+.results-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+.results-container .results-main {
+  max-width: 1280px;
+  width: 100vw;
+  overflow-x: hidden;
+}
+.results-container .results-main .results-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.results-container .results-main .results-title {
+  margin-left: 20px;
+}
+.results-container .results-main .results-title .results-intro {
+  font-size: 19px;
+}
+.results-container .results-main .results-title .results-diagnosis {
+  font-size: 30px;
+}
+.results-container .results-main .results-title .results-diagnosis span {
+  color: #EB282E;
+  font-weight: 600;
+}
+.results-container .results-main .results-images {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  overflow-x: hidden;
+}
+.results-container .results-main .results-images .results-image-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.results-container .results-main .results-images .results-image-block .results-image .results-image-image {
+  width: 330px;
+  height: 230px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+.results-container .results-main .results-images .results-image-block .results-text {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.results-container .results-main .results-details {
+  width: 80%;
+  height: 450px;
+  padding: 40px;
+  box-shadow: -1px 2px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  margin-bottom: 40px;
+}
+.results-container .results-main .results-details .results-details-title {
+  font-size: 27px;
+  color: #EB282E;
+  font-weight: 800;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.results-container .results-main .results-details hr {
+  border: 0.5px solid #EB282E;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.results-container .results-main .results-details .results-details-block .results-details-item {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.results-container .results-main .results-details .results-details-block .results-details-item-name {
+  width: 30%;
+  font-size: 20px;
+  font-weight: 600;
+}
+.results-container .results-main .results-details .results-details-block .results-details-item-value {
+  font-size: 18px;
+  width: 70%;
+}
+
+@media screen and (max-width: 1020px) {
+  .results-images {
+    flex-direction: column !important;
+  }
+  .results-details {
+    padding: 20px !important;
+  }
+  .results-details-title {
+    font-size: 20px !important;
+  }
+  .results-details-item-name, .results-details-item-value {
+    font-size: 14px !important;
+  }
+  .results-details-item-name {
+    margin-right: 15px !important;
+  }
 }/*# sourceMappingURL=main.css.map */

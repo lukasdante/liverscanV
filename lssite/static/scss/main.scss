@@ -6,6 +6,7 @@
     padding: 0;
     font-family: "Geologica", sans-serif;
     color: $main-color-text;
+    overflow-x: hidden !important;
 }
 
 a {
@@ -17,6 +18,14 @@ a {
         text-decoration: none;
         color: inherit;
     }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .main-svg, .sub-svg {
@@ -473,5 +482,133 @@ a {
         background-position: center;
         background-repeat: no-repeat;
         border: none;
+    }
+}
+
+.results-container {
+    @include viewport-center;
+
+    .results-main {
+        @include viewport-center-child;
+        
+
+        .results-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }        
+
+        .results-title {
+            margin-left: 20px;
+
+            .results-intro {
+                font-size: 19px;
+                
+            }
+            .results-diagnosis {
+                font-size: 30px;
+                
+                span {
+                    color: $main-color-accent;
+                    font-weight: $semibold;
+                }
+            }            
+        }
+
+        .results-images {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            overflow-x: hidden;
+
+            .results-image-block {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .results-image {
+                    .results-image-image {
+                        width: 330px;
+                        height: 230px;
+                        border-radius: 15px;
+                        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+                    }
+                }
+
+                .results-text {
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+
+        .results-details {
+            width: 80%;
+            height: 450px;
+            padding: 40px;
+            box-shadow: -1px 2px 5px rgba(0, 0, 0, 0.25);
+            border-radius: 20px;
+            margin-bottom: 40px;
+
+            .results-details-title {
+                font-size: 27px;
+                color: $main-color-accent;
+                font-weight: $bold;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+
+            hr {
+                border: 0.5px solid $main-color-accent;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+
+            .results-details-block {
+                .results-details-item {
+                    display: flex;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+
+                    &-name {
+                        width: 30%;
+                        font-size: 20px;
+                        font-weight: $semibold;
+                    }
+
+                    &-value {
+                        font-size: 18px;
+                        width: 70%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1020px) {
+    .results-images { 
+        flex-direction: column !important;
+    }
+
+    .results-details {
+        padding: 20px !important;
+    }
+
+    .results-details-title {
+        font-size: 20px !important;
+    }
+
+    .results-details-item {
+        &-name, &-value {
+            font-size: 14px !important;
+        }
+
+        &-name {
+            margin-right: 15px !important;
+        }
     }
 }
