@@ -18,6 +18,10 @@
         <div class="navbar-page {% if curr_page == 'doctor-results' %}navbar-page-focus{% endif %}">
             <a href="{% url 'doctor-results' %}">Results</a>
         </div>
+
+        <div class="navbar-page {% if curr_page == 'patient-history' %}navbar-page-focus{% endif %}">
+            <a href="{% url 'patient-history' %}">History</a>
+        </div>
         
         <div class="navbar-page {% if curr_page == 'upload' %}navbar-page-focus{% endif %}">
             <a href="{% url 'upload' %}">Upload</a>

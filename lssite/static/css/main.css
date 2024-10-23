@@ -490,7 +490,7 @@ body {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.results-container .results-main .results-details {
+.results-container .results-main .results-details, .results-container .results-main .upload-details {
   width: 80%;
   height: 450px;
   padding: 40px;
@@ -498,29 +498,29 @@ body {
   border-radius: 20px;
   margin-bottom: 40px;
 }
-.results-container .results-main .results-details .results-details-title {
+.results-container .results-main .results-details .results-details-title, .results-container .results-main .upload-details .results-details-title {
   font-size: 27px;
   color: #EB282E;
   font-weight: 800;
   margin-top: 15px;
   margin-bottom: 15px;
 }
-.results-container .results-main .results-details hr {
+.results-container .results-main .results-details hr, .results-container .results-main .upload-details hr {
   border: 0.5px solid #EB282E;
   margin-top: 15px;
   margin-bottom: 15px;
 }
-.results-container .results-main .results-details .results-details-block .results-details-item {
+.results-container .results-main .results-details .results-details-block .results-details-item, .results-container .results-main .upload-details .results-details-block .results-details-item {
   display: flex;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.results-container .results-main .results-details .results-details-block .results-details-item-name {
+.results-container .results-main .results-details .results-details-block .results-details-item-name, .results-container .results-main .upload-details .results-details-block .results-details-item-name {
   width: 30%;
   font-size: 20px;
   font-weight: 600;
 }
-.results-container .results-main .results-details .results-details-block .results-details-item-value {
+.results-container .results-main .results-details .results-details-block .results-details-item-value, .results-container .results-main .upload-details .results-details-block .results-details-item-value {
   font-size: 18px;
   width: 70%;
 }
@@ -652,4 +652,117 @@ body {
 }
 .assigned-reports-report-details h1 {
   font-size: 1.375rem;
+}
+
+.upload-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+.upload-container .upload-main {
+  max-width: 1280px;
+  width: 100vw;
+}
+.upload-container .upload-main .upload-title {
+  font-size: 36px;
+  color: #EB282E;
+  font-weight: 800;
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+.upload-container .upload-main .upload-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.upload-container .upload-main .upload-image-container .upload-image-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 500px;
+  height: 300px;
+  max-width: 80vw;
+  max-height: 60vw;
+  box-shadow: -1px 2px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  background-color: #FFF8F8;
+  cursor: pointer;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.upload-container .upload-main .upload-image-container .upload-image-main .upload-image-text {
+  font-size: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  max-width: 70%;
+  text-align: center;
+}
+.upload-container .upload-main .upload-details {
+  margin-left: 30px;
+}
+.upload-container .upload-main .upload-details .upload-details-title {
+  font-size: 27px;
+  font-weight: 800;
+  color: #EB282E;
+}
+.upload-container .upload-main .upload-details .upload-details-block {
+  margin-top: 40px;
+  margin-bottom: 75px;
+}
+.upload-container .upload-main .upload-details .upload-details-block .upload-details-item {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.upload-container .upload-main .upload-details .upload-details-block .upload-details-item-name {
+  width: 30%;
+  font-size: 20px;
+  font-weight: 600;
+}
+.upload-container .upload-main .upload-details .upload-details-block .upload-details-item-value {
+  font-size: 18px;
+  width: 70%;
+}
+.upload-container .upload-main .upload-details .text-upload, .upload-container .upload-main .upload-details .date-upload {
+  width: 330px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  font-size: 15px;
+}
+
+@media screen and (max-width: 720px) {
+  .upload-title {
+    font-size: 24px !important;
+  }
+  .upload-image-main {
+    width: 300px !important;
+    height: 200px !important;
+  }
+  .upload-image-text {
+    font-size: 18px !important;
+  }
+  .upload-details-title {
+    font-size: 20px !important;
+  }
+  .upload-details-block, .upload-details-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .text-upload, .date-upload {
+    width: 300px !important;
+    height: 50px !important;
+  }
+  .upload-details-item-name {
+    width: 150px !important;
+  }
+  .upload-details-item-name, .upload-details-item-value, .initials {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+  }
 }/*# sourceMappingURL=main.css.map */

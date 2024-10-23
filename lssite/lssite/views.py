@@ -37,6 +37,14 @@ def doctor_results_view(request):
     return render(request, 'doctor_results.html', context=context)
 
 @user_passes_test(doctor_required)
+def patient_history_view(request):
+    logout_view(request)
+
+    context = {}
+    context['curr_page'] = 'patient-history'
+    return render(request, 'patient_history.html', context=context)
+
+@user_passes_test(doctor_required)
 def upload_view(request):
     logout_view(request)
     
