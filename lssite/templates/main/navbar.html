@@ -1,12 +1,42 @@
+{% load static %}
+
 <div class="navbar-container">
     <div class="navbar-main">
-        <div class="navbar-page navbar-page-focus">
-            <a href="{% url 'home' %}">Home</a></div>
-        <div class="navbar-page">
+        <div class="navbar-page {% if curr_page == 'home' %}navbar-page-focus{% endif %}">
+            <a href="{% url 'home' %}">Home</a>
+        </div>
+        
+        {% if user.is_authenticated %}
+
+        {% if user.role == 'patient' %}
+        <div class="navbar-page {% if curr_page == 'results' %}navbar-page-focus{% endif %}">
             <a href="{% url 'results' %}">Results</a>
         </div>
+        {% endif %}
+
+        {% if user.role == 'doctor' %}
+        <div class="navbar-page {% if curr_page == 'doctor-results' %}navbar-page-focus{% endif %}">
+            <a href="{% url 'doctor-results' %}">Results</a>
+        </div>
+        
+        <div class="navbar-page {% if curr_page == 'upload' %}navbar-page-focus{% endif %}">
+            <a href="{% url 'upload' %}">Upload</a>
+        </div>
+
+        {% endif %}
+
+        <div class="navbar-page logout-button">
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" name="logout" class="logout-button">Logout?</button>
+            </form>
+        </div>
+        
+        {% else %}
+        
         <div class="navbar-page login-button">
             <a href="{% url 'login' %}">Login to see results</a>
         </div>
+        {% endif %}
     </div>
 </div>

@@ -17,7 +17,6 @@
 @mixin viewport-center-child {
     max-width: $max-width-viewport;
     width: 100vw;
-    overflow-x: hidden;
 }
 
 @mixin form-fields {

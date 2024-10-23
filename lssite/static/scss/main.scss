@@ -6,7 +6,6 @@
     padding: 0;
     font-family: "Geologica", sans-serif;
     color: $main-color-text;
-    overflow-x: hidden !important;
 }
 
 a {
@@ -77,6 +76,18 @@ body {
             width: 180px;
             background-color: $main-color-accent;
             color: $main-color-background;
+        }
+
+        .logout-button {
+            @include flex-center();
+            border-radius: 100px;
+            height: 40px;
+            width: 100px;
+            background-color: $main-color-accent;
+            color: $main-color-background;
+            border: none;
+            outline: none;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.25)
         }
     }
 }
@@ -609,6 +620,140 @@ body {
 
         &-name {
             margin-right: 15px !important;
+        }
+    }
+}
+
+.assigned-reports {
+    width: 100%;
+    max-width: 1440px;
+    gap: 20px;
+    display: flex;
+    overflow: hidden;
+    height: 100%;
+
+    &-left-panel {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        padding: 20px 30px;
+        overflow-y: auto;
+        scrollbar-width: none;
+        padding-bottom: 60px;
+        gap: 20px;
+
+        .search-container {
+            position: sticky;
+            top: 0;
+            width: 100; // Adjust width as needed
+            z-index: 2;
+        
+            .search-input {
+                width: 100%;
+                padding: 10px 40px 10px 40px; // Adjust padding to fit icons
+                border: none;
+                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+                border-radius: 25px;
+                font-size: 1rem;
+                outline: none;
+                transition: border-color 0.3s;
+        
+                &:focus {
+                    border-color: #007bff; // Adjust focus border color
+                }
+            }
+        
+            .search-icon {
+                position: absolute;
+                width: 14px;
+                height: auto;
+                top: 50%;
+                left: 15px;
+                transform: translateY(-50%);
+                font-size: 1.2rem;
+                color: #007bff; // Adjust icon color
+            }
+        
+        }
+
+
+    }
+
+    &-right-panel {
+        margin: 5px;
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 70%;
+        overflow-y: auto;
+        scrollbar-width: none;
+
+
+
+        p {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        
+    }
+
+    &-card {
+        display: flex;
+        position: relative;
+        align-items: center;
+        background-color: white;
+        padding: 10px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        border-radius: 8px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        &:hover {
+            background-color: #e9ecef22;
+        }
+
+        &.selected {
+            transform: scale(1.05);
+            box-shadow: 5px 5px 15px 2px rgba(0,0,0,0.3);
+            z-index: 1;
+
+            &::before {
+                content: '\f105'; // Unicode for FontAwesome right arrow icon
+                font-family: 'FontAwesome';
+                position: absolute;
+                top: 50%;
+                left: -10px; 
+                transform: translateY(-50%);
+                font-size: 25px;
+                color: $main-color-accent; // Adjust the color as needed
+            }
+        }
+    }
+
+    &-card-content {
+        h2 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        p {
+            margin: 0;
+            font-size: 12px;
+            color: #6c757d;
+        }
+    }
+
+    &-report-details {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 40px;
+        margin: 0 10px;
+        background-color: white;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+
+        h1 {
+            font-size: 1.375rem;
         }
     }
 }

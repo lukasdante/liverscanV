@@ -1,0 +1,148 @@
+{% extends 'main/main.html' %}
+{% load static %}
+{% block content %}
+<div class="assigned-reports">
+    <div class="assigned-reports-left-panel">
+        <div class="search-container">
+            <input type="text" placeholder="Search" class="search-input" id="search-input">
+            <img src="{% static 'img/search.svg' %}" alt="Search" class="search-icon">
+        </div>
+    
+        <div class="assigned-reports-card-container">
+            <div class="assigned-reports-card">
+                <div class="assigned-reports-progress-circle" data-progress="25"></div>
+                <div class="assigned-reports-card-content">
+                    <h2>Patient Name</h2>
+                    <p>Diagnosis | Confidence</p>
+                </div>
+            </div>
+            <div class="assigned-reports-card">
+                <div class="assigned-reports-progress-circle" data-progress="25"></div>
+                <div class="assigned-reports-card-content">
+                    <h2>Patient Name</h2>
+                    <p>Diagnosis | Confidence</p>
+                </div>
+            </div>
+            <div class="assigned-reports-card">
+                <div class="assigned-reports-progress-circle" data-progress="25"></div>
+                <div class="assigned-reports-card-content">
+                    <h2>Patient Name</h2>
+                    <p>Diagnosis | Confidence</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="assigned-reports-right-panel" id="assigned-reports-right-panel">
+        <div class="assigned-reports-report-details">
+            <div class="form-selected" style="display: none;"><h1>Report Details</h1></div>
+            <div class="no-form-selected" style="display: block;"><h1>No patient selected.</h1></div>
+            <div id="report-details-content">
+            </div>
+        </div>
+        <form method="post">
+        {% csrf_token %}
+        <fieldset style="margin: 0; padding: 0; border: 0;">
+        <!--If report.-->
+        <div class="ofi-verification-buttons" style="display: none;">
+            <div class="ofi-verification-text">
+                This finding highlights an area where there is potential to enhance existing processes or controls. While it does not indicate a deficiency, it presents a chance to optimize and strengthen operational efficiency. We kindly request your input on whether to accept or reject this finding. Please consider the potential benefits and implications for continuous improvement within the organization.
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" id="ofi_report_id" value="">
+                <button class="button" name="ofi_decision" value="verify-ofi">Accept</button>
+                <button class="button" name="ofi_decision" value="reject-ofi">Reject</button>
+            </form>
+        </div>
+        
+        <div class="all-forms" style="display: none;">
+            <div class="assigned-reports-immediate-action" id="assigned-reports-immediate-action">
+                <h1>Containment / Immediate Correction <span class="assigned-reports-immediate-action-tooltip">🛈<span class="tooltiptext">Identify the immediate reason and immediate action to be taken to contain the non-conformity. When the containment action may not be applicable, indicate “N/A”.</span></span></h1>
+                <br>
+                
+                        <input type="hidden" name="report_id">
+                        <label for="details">Details:</label>
+                        <textarea class="details" id="immediate-action-details" name="details" placeholder="Type here" required>{{ form_data.details }}</textarea><br>
+            </div>
+    
+            <div class="assigned-reports-root-cause" id="assigned-reports-root-cause">
+                <h1>Root Cause Analysis <span class="assigned-reports-root-cause-tooltip">🛈<span class="tooltiptext">Perform the Root Cause Analysis (RCA) to determine the core reason the non-conformity occurred. Ask why it happened, write the immediate answer on the first row; then ask why that first row happened and answer it on the second row; all the way to the root (recommended to do 5).</span></span></h1>
+                <br>
+                        {% csrf_token %}
+                        <input type="hidden" name="report_id">
+                        <label class="labels" for="root_cause">Why:</label>
+                        <div class="root-cause-container" id="root_cause_container">
+                            {% for cause in form_data.root_cause %}
+                            <input type="text" id="root_cause" name="root_cause" value="{{ cause }}" required>
+                            {% endfor %}
+                            {% for i in "123" %}
+                            <input type="text" id="root_cause{{ i }}" name="root_cause" required>
+                            {% endfor %}
+                        </div>
+                        <div class="button-container">
+                            <button class="button add" type="button" onclick="addField('root_cause_container', 'root_cause', 3)">Add Another Root Cause</button>
+                            <button class="button delete" type="button" id="removeFieldButton" onclick="removeField('root_cause_container', 3)">Remove Last Root Cause</button>
+                        </div>
+    
+                        <div class="root-cause-final">
+                            <div class="final-root-cause">
+                                <label class="labels" for="final_root_cause">Final Root Cause:</label>
+                                <select id="final_root_cause" name="final_root_cause" required>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div class="root-cause-category">
+                                <label class="labels" for="root_cause_cat">Final Root Cause Subcategory:</label>
+                                <select id="root_cause_cat" name="root_cause_cat" value="{{ form_data.root_cause_cat }}" required>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+            </div>
+    
+            <div class="assigned-reports-action-plan" id="assigned-reports-action-plan">
+                <h1>Corrective Action Plan <span class="assigned-reports-root-cause-tooltip">🛈<span class="tooltiptext">Provide the details of the Action Plan</span></span></h1>
+                <br>
+                <div class="form_container_iterate" id="form_container_iterate">
+                </div>
+    
+                <div id="form_container">
+                            {% csrf_token %}
+                            <div class="h1">
+                                <input type="hidden" name="report_id" id="report_id" value="">
+                                <div class="button-container">
+                                    <button class="button add" type="button" onclick="addActionField()">Add Another Action Plan</button>
+                                    <button class="button delete" type="button" onclick="removeActionField()" id="removeFieldButton">Remove Last Action Plan</button>
+                                </div>
+                                <div class="action-container-repeated-parent">
+                                    <div class="action-container-repeated">
+                                        <h3>Action 1</h3>
+                                        <label for="action_desc">Action Description:</label>
+                                        <textarea id="action_desc" name="action_desc" required></textarea>
+                                    </div>
+                                    <div class="h2">
+                                        <div class="action_owner">
+                                            <label for="action_owner">Action Owner:</label>
+                                            <input type="text" id="action_owner" name="action_owner" required>
+                                        </div>
+                                        <div class="action_deadline">
+                                            <label for="deadline">Deadline:</label>
+                                            <input type="date" id="deadline" name="deadline" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="action-container-iterated">
+                                </div>
+                            </div>
+                            <div class="h3">
+                                <button type="submit" name="submit_all_forms">Submit All Forms</button>
+                            </div>
+                    </div>
+                </div>
+        </div>
+    </fieldset>
+    </form>
+    </div>
+</div>
+
+{% endblock %}
