@@ -3,20 +3,23 @@
 {% block content %}
 <div class="upload-container">
     <div class="upload-main">
+    <form action="" method="post">
+    {% csrf_token %}
         <div class="upload-title">Upload now</div>
         <div class="upload-image-container">
             <div class="upload-image-main">
+                
                 <div class="upload-image-icon">
                     <img src="{% static 'img/upload-icon.svg' %}" alt="">
                 </div>
                 <div class="upload-image-text">
                     Drag and drop images or click to upload
                 </div>
+                <input type="file" class="input-files" accept="image/*" multiple hidden>
             </div>
         </div>
         <div class="upload-details">
             <div class="upload-details-title">Fill Details</div>
-            <form method="post">
             <div class="upload-details-block">
                 <div class="upload-details-item">
                     <div class="upload-details-item-name">Patient's Initials:</div>
@@ -43,8 +46,8 @@
                     </div>
                 </div>
             </div>
-            </form>
         </div>
+    </form>
     </div>
 </div>
 {% endblock %}

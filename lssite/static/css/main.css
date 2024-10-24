@@ -196,6 +196,10 @@ body {
 .main-content .stats-container .stats-main .stat .stat-description {
   font-size: 18px;
 }
+.main-content .contributors-container {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
 .main-content .contributors-container .contributors-main {
   max-width: 1280px;
   width: 100vw;
@@ -226,7 +230,7 @@ body {
   margin-bottom: 30px;
 }
 .main-content .contributors-container .contributors-main .contributor-description .contributor-text {
-  font-size: 20px;
+  font-size: 15px;
   margin-bottom: 25px;
 }
 
@@ -676,6 +680,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+.upload-container .upload-main .upload-image-container .active-image {
+  border: 2.5px solid #EB282E !important;
+}
 .upload-container .upload-main .upload-image-container .upload-image-main {
   display: flex;
   align-items: center;
@@ -687,7 +694,8 @@ body {
   max-height: 60vw;
   box-shadow: -1px 2px 5px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-  background-color: #FFF8F8;
+  background-color: rgba(255, 0, 0, 0.05);
+  border: 2.5px dashed #EB282E;
   cursor: pointer;
   margin-top: 25px;
   margin-bottom: 25px;
