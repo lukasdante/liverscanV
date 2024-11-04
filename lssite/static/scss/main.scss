@@ -27,6 +27,18 @@ body {
     overflow-x: hidden;
 }
 
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+        opacity: 0.8;
+        
+    }
+}
+
 .main-svg, .sub-svg {
     filter: drop-shadow(-30px -30px 250px $main-color-accent);
     z-index: -10;
@@ -839,6 +851,23 @@ body {
                         width: 70%;
                     }
                 }
+
+
+            }
+            .upload-submit {
+                    
+                margin-bottom: 40px;
+                margin-left: 60%;
+                &-button {
+                    background-color: $main-color-accent;
+                    color: white;
+                    font-size: 18px;
+                    font-weight: $semibold;
+                    width: 150px;
+                    height: 45px;
+                    border-radius: 100px;
+                    box-shadow: -1px 2px 5px rgba(0, 0, 0, 0.25);
+                }
             }
 
             .text-upload, .date-upload {
@@ -889,5 +918,9 @@ body {
     .upload-details-item-name, .upload-details-item-value, .initials {
         font-size: 14px !important;
         font-weight: $semibold !important;
+    }
+
+    .upload-submit {
+        margin-left: 50% !important;
     }
 }

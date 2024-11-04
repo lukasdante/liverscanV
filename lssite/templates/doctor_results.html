@@ -9,27 +9,14 @@
         </div>
     
         <div class="assigned-reports-card-container">
-            <div class="assigned-reports-card">
-                <div class="assigned-reports-progress-circle" data-progress="25"></div>
+            {% for diagnosis in diagnoses %}
+            <div class="assigned-reports-card" data-target="{{ diagnosis.id }}" onclick="fetchDiagnosisDetails('{{ diagnosis.id }}')">
                 <div class="assigned-reports-card-content">
-                    <h2>Patient ID</h2>
-                    <p>Diagnosis | Confidence | Area cm&sup2;</p>
+                    <h2>{{ diagnosis.patient_id }}</h2>
+                    <p>{{ diagnosis.initial_diagnosis }} | {{ diagnosis.confidence }} | {{ diagnosis.area }} cm&sup2;</p>
                 </div>
             </div>
-            <div class="assigned-reports-card">
-                <div class="assigned-reports-progress-circle" data-progress="25"></div>
-                <div class="assigned-reports-card-content">
-                    <h2>Patient ID</h2>
-                    <p>Diagnosis | Confidence | Area cm&sup2;</p>
-                </div>
-            </div>
-            <div class="assigned-reports-card">
-                <div class="assigned-reports-progress-circle" data-progress="25"></div>
-                <div class="assigned-reports-card-content">
-                    <h2>Patient ID</h2>
-                    <p>Diagnosis | Confidence | Area cm&sup2;</p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
     <div class="assigned-reports-right-panel" id="assigned-reports-right-panel">
