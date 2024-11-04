@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .views import (home_view, results_view, doctor_results_view, patient_history_view, upload_view)
-from liverscan.views import (login_view, signup_view)
+from liverscan.views import (login_view, signup_view, doctor_login_view)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,5 +28,6 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('doctor/results', doctor_results_view, name='doctor-results'),
     path('doctor/history', patient_history_view, name='patient-history'),
-    path('doctor/upload', upload_view, name='upload')
+    path('doctor/upload', upload_view, name='upload'),
+    path('doctor/login', doctor_login_view, name='doctor_login'),
 ]

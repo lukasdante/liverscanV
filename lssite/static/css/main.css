@@ -562,7 +562,7 @@ button:hover {
   gap: 20px;
   display: flex;
   overflow: hidden;
-  height: 100%;
+  height: 120vh;
 }
 .assigned-reports-left-panel {
   position: relative;
@@ -613,6 +613,7 @@ button:hover {
   width: 70%;
   overflow-y: auto;
   scrollbar-width: none;
+  margin-bottom: 50px;
 }
 .assigned-reports-right-panel p {
   text-align: center;
@@ -800,4 +801,102 @@ button:hover {
   .upload-submit {
     margin-left: 50% !important;
   }
+}
+.doctor-results-body .doctor-results-title {
+  color: #EB282E;
+  font-weight: 800;
+  font-size: 36px;
+}
+.doctor-results-body .results-images {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  overflow-x: hidden;
+}
+.doctor-results-body .results-images .results-image-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.doctor-results-body .results-images .results-image-block .results-image .results-image-image {
+  width: 300px;
+  height: 230px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+.doctor-results-body .results-images .results-image-block .results-text {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.doctor-results-body .results-details, .doctor-results-body .upload-details {
+  width: 80%;
+  height: 450px;
+  margin-bottom: 40px;
+}
+.doctor-results-body .results-details .results-details-title, .doctor-results-body .upload-details .results-details-title {
+  font-size: 27px;
+  color: #EB282E;
+  font-weight: 800;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.doctor-results-body .results-details hr, .doctor-results-body .upload-details hr {
+  border: 0.5px solid #EB282E;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.doctor-results-body .results-details .results-details-block .results-details-item, .doctor-results-body .upload-details .results-details-block .results-details-item {
+  display: flex;
+  margin-bottom: 20px;
+}
+.doctor-results-body .results-details .results-details-block .results-details-item-name, .doctor-results-body .upload-details .results-details-block .results-details-item-name {
+  width: 30%;
+  font-size: 20px;
+  font-weight: 600;
+}
+.doctor-results-body .results-details .results-details-block .results-details-item-value, .doctor-results-body .upload-details .results-details-block .results-details-item-value {
+  font-size: 18px;
+  width: 70%;
+}
+.doctor-results-body .upload-submit {
+  margin-bottom: 40px;
+  margin-left: 60%;
+}
+.doctor-results-body .upload-submit-button {
+  background-color: #EB282E;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  width: 150px;
+  height: 45px;
+  border-radius: 100px;
+  box-shadow: -1px 2px 5px rgba(0, 0, 0, 0.25);
+}
+.doctor-results-body .results-details-item {
+  display: flex;
+  align-items: center;
+}
+.doctor-results-body .results-details-item .results-details-item-value, .doctor-results-body .results-details-item input, .doctor-results-body .results-details-item select, .doctor-results-body .results-details-item textarea {
+  padding: 15px;
+  height: 50px;
+  width: 330px !important;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding-left: 20px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  font-size: 18px;
+}
+.doctor-results-body .results-details-item .results-details-item-value {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.75);
+}
+.doctor-results-body .results-details-item .remarks {
+  width: 70% !important;
+  height: 100px;
+  text-wrap: wrap;
 }/*# sourceMappingURL=main.css.map */

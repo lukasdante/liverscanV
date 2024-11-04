@@ -3,7 +3,7 @@
 
 <div class="login-container">
     <div class="login-main">
-        <div class="login-title">Login</div>
+        <div class="login-title">Hello Doctor!</div>
         <form method="post">
             {% csrf_token %}
             <div class="login-form">
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="forgot-password">
-                        <a href="{% url 'doctor_login' %}">Login as a doctor?</a>
+                        <a href="{% url 'login' %}">Login as a patient?</a>
                     </div>
                 </div>
             </div>
