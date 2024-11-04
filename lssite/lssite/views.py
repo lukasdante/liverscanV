@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from liverscan.models import (Diagnosis)
-from liverscan.forms import create_request_diagnosis
+from liverscan.forms import create_request_diagnosis, validate_diagnosis
 from django.contrib.auth.decorators import user_passes_test, login_required
 from django.contrib.auth import logout
 
@@ -36,6 +36,10 @@ def doctor_results_view(request):
     context = {}
     context['curr_page'] = 'doctor-results'
     context['diagnoses'] = Diagnosis.objects.filter(status__lt = 3)
+
+    if request.method == 'POST':
+        validate_diagnosis(request=request)
+
     return render(request, 'doctor_results.html', context=context)
 
 @user_passes_test(doctor_required)

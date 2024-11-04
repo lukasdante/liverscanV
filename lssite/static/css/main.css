@@ -892,7 +892,7 @@ button:hover {
   font-size: 18px;
 }
 .doctor-results-body .results-details-item .results-details-item-value {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.025);
   color: rgba(0, 0, 0, 0.75);
 }
 .doctor-results-body .results-details-item .remarks {

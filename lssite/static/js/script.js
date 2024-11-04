@@ -7,6 +7,8 @@ const selectedBanner = document.querySelector(".doctor-results-main");
 const patientIDDiv = document.querySelector(".patient-id-value");
 const statusDiv = document.querySelector(".status-value");
 const initialDiagnosisDiv = document.querySelector(".diagnosis-value");
+const finalDiagnosisDiv = document.querySelector(".final-diagnosis-value");
+const remarksDiv = document.querySelector(".remarks");
 const diagnosisDateDiv = document.querySelector(".date-value");
 const areaDiv = document.querySelector(".area-value");
 const today = new Date();
@@ -36,24 +38,28 @@ async function fetchDiagnosisDetails(diagnosisId) {
         noSelectedBanner.style.display = "none";
         selectedBanner.style.display = "block";
         
-        patientIDDiv.textContent = diagnosis_data.patient_id
+        patientIDDiv.value = diagnosis_data.patient_id;
 
         switch(diagnosis_data.status) {
             case 1:
-                statusDiv.textContent = `Waiting for predictions`
+                statusDiv.textContent = `Waiting for predictions`;
             case 2:
-                statusDiv.textContent = `Waiting for validation`
+                statusDiv.textContent = `Waiting for validation`;
             case 3:
-                statusDiv.textContent = `Finished`
+                statusDiv.textContent = `Finished`;
             default:
-                statusDiv.textContent = `Waiting for predictions`
+                statusDiv.textContent = `Waiting for predictions`;
 
         }
         
-        
-        
-        initialDiagnosisDiv.textContent = diagnosis_data.initial_diagnosis
-        diagnosisDateDiv.textContent = diagnosis_data.diagnosis_date
+        initialDiagnosisDiv.textContent = diagnosis_data.initial_diagnosis;
+        if (diagnosis_data.final_diagnosis) {
+            finalDiagnosisDiv.textContent = diagnosis_data.final_diagnosis;
+        }
+        if (diagnosis_data.remarks) {
+            remarksDiv.textContent = diagnosis_data.remarks;
+        }
+        diagnosisDateDiv.textContent = diagnosis_data.diagnosis_date;
 
         if (diagnosis_data.initial_diagnosis == 'normal' || diagnosis_data.initial_diagnosis == null) {
             areaDiv.textContent = `0 cm\u00B2`;

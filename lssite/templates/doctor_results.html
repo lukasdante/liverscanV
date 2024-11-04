@@ -20,7 +20,7 @@
                         {% endif %}
                         {% if diagnosis.status == 2  %}
                         <svg  style="margin: 0px 5px 0px 5px;" width="10" height="10">
-                            <circle cx="5" cy="5" r="5" fill="green" />
+                            <circle cx="5" cy="5" r="5" fill="yellow" />
                         </svg>
                         {% endif %}
                         {{ diagnosis.patient_id }}</h2>
@@ -68,7 +68,7 @@
                             {% csrf_token %}
                             <div class="results-details-item">
                                 <div class="results-details-item-name ">Patient ID:</div>
-                                <div class="results-details-item-value patient-id-value"></div>
+                                <input type="text" name="patient_id" class="results-details-item-value patient-id-value" readonly>
                             </div>
                             <div class="results-details-item">
                                 <div class="results-details-item-name">Status:</div>
@@ -89,8 +89,8 @@
                             </div>
                             <div class="results-details-item">
                                 <div class="results-details-item-name">Final Diagnosis:</div>
-                                <select id="status" name="final_diagnosis">
-                                    <option value="normal">normal</option>
+                                <select id="status" name="final_diagnosis" required>
+                                    <option value="normal" selected>normal</option>
                                     <option value="abscess">abscess</option>
                                     <option value="cyst">cyst</option>
                                     <option value="tumor">tumor</option>
