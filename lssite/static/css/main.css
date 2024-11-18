@@ -357,6 +357,11 @@ button:hover {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+.login-container label {
+  display: block;
+  margin-bottom: 10px;
+  color: #826768;
+}
 .login-container .text-input-field {
   display: flex;
   justify-content: center;
@@ -368,14 +373,8 @@ button:hover {
   border: none;
   outline: none;
   box-shadow: -1px 2px 5px rgba(0, 0, 0, 0.25);
-}
-.login-container .text-input-field::-moz-placeholder {
-  color: #826768;
-  opacity: 0.8;
-  font-size: 15px;
-}
-.login-container .text-input-field::placeholder {
-  color: #826768;
+  justify-content: flex-start;
+  color: #272727;
   opacity: 0.8;
   font-size: 15px;
 }
@@ -618,6 +617,9 @@ button:hover {
 .assigned-reports-right-panel p {
   text-align: center;
   font-size: 1.2rem;
+}
+.assigned-reports .active-card {
+  border-right: solid red;
 }
 .assigned-reports-card {
   display: flex;
@@ -899,4 +901,57 @@ button:hover {
   width: 70% !important;
   height: 100px;
   text-wrap: wrap;
+}
+
+@media screen and (max-width: 600px) {
+  .assigned-reports {
+    justify-content: center;
+  }
+  .assigned-reports-left-panel {
+    width: 90vw !important;
+  }
+  .assigned-reports-right-panel {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 500px) {
+  .burger-icon {
+    display: block !important;
+    z-index: 500 !important;
+    margin-right: 15px !important;
+  }
+  .navbar-container {
+    height: 60px !important;
+    align-items: flex-end !important;
+    flex-direction: column;
+    position: fixed !important;
+    background-color: white !important;
+  }
+  .navbar-main {
+    display: none !important;
+    z-index: 500 !important;
+  }
+  .navbar-main.active {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: fixed !important;
+    top: 60px !important;
+    height: calc(100vh - 60px) !important;
+    background-color: #EB282E;
+  }
+  .navbar-main.active .navbar-page {
+    color: white !important;
+    font-size: 20px !important;
+    margin-top: 15px !important;
+  }
+  .navbar-main.active .navbar-page button {
+    background-color: white !important;
+    color: #EB282E !important;
+    margin-top: 30px !important;
+  }
+  .main-content {
+    margin-top: 60px !important;
+  }
 }/*# sourceMappingURL=main.css.map */

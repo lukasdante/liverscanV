@@ -16,8 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import (home_view, results_view, doctor_results_view, patient_history_view, upload_view)
-from liverscan.views import (login_view, signup_view, doctor_login_view)
+from .views import (home_view, doctor_results_view, patient_history_view, upload_view)
+from liverscan.views import (login_view, signup_view, doctor_login_view, results_view)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

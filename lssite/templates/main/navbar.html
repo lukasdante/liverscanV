@@ -1,7 +1,11 @@
 {% load static %}
 
 <div class="navbar-container">
+    <div class="burger-icon" style="display: none;">
+        <img src="{% static 'img/burger.svg' %}" alt="">
+    </div>
     <div class="navbar-main">
+
         <div class="navbar-page {% if curr_page == 'home' %}navbar-page-focus{% endif %}">
             <a href="{% url 'home' %}">Home</a>
         </div>
@@ -30,7 +34,7 @@
         {% endif %}
 
         <div class="navbar-page logout-button">
-            <form method="post">
+            <form method="post" class="logout-form">
                 {% csrf_token %}
                 <button type="submit" name="logout" class="logout-button">Logout?</button>
             </form>
@@ -39,7 +43,7 @@
         {% else %}
         
         <div class="navbar-page login-button">
-            <a href="{% url 'login' %}">Login to see results</a>
+            <a href="{% url 'login' %}">Fill up to see results</a>
         </div>
         {% endif %}
     </div>

@@ -10,9 +10,9 @@
     
         <div class="assigned-reports-card-container">
             {% for diagnosis in diagnoses %}
-            <div class="assigned-reports-card" data-target="{{ diagnosis.id }}" onclick="fetchDiagnosisDetails('{{ diagnosis.id }}')">
+            <div class="assigned-reports-card" data-target="{{ diagnosis.id }}" data-id="{{ diagnosis.id }}" onclick="fetchDiagnosisDetails('{{ diagnosis.id }}')">
                 <div class="assigned-reports-card-content">
-                    <h2 style="display: flex; align-items: center; ">
+                    <h2 class="search-items" style="display: flex; align-items: center; ">
                         {% if diagnosis.status == 1  %}
                         <svg  style="margin: 0px 5px 0px 5px;" width="10" height="10">
                             <circle cx="5" cy="5" r="5" fill="red" />
@@ -33,7 +33,7 @@
     <div class="assigned-reports-right-panel" id="assigned-reports-right-panel">
         <div class="assigned-reports-report-details">
             <div class="form-selected" style="display: none;"><h1>Report Details</h1></div>
-            <div class="no-form-selected" style="display: block;"><h1>No patient selected.</h1></div>
+            <div class="no-form-selected" style="display: block;"><h1>Please select a patient.</h1></div>
             <div id="report-details-content">
             </div>
         </div>

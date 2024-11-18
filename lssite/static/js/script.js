@@ -16,7 +16,39 @@ const year = today.getFullYear();
 const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
 const day = String(today.getDate()).padStart(2, '0');
 const formattedDate = `${year}-${month}-${day}`;
-dateField.value = formattedDate;
+
+if (dateField) {
+    dateField.value = formattedDate;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const searchBox = document.querySelector(".search-input");
+    const searchItems = document.querySelectorAll(".search-items");
+
+    searchBox.addEventListener("input", () => {
+        const query = searchBox.value.toLowerCase();
+
+        searchItems.forEach((item) => {
+            const text = item.textContent.toLowerCase();
+            const parentDiv = item.parentElement.parentElement;
+            if (text.includes(query)) {
+                parentDiv.style.display = "block";
+            } else {
+                parentDiv.style.display = "none";
+            }
+        });
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const burgerIcon = document.querySelector(".burger-icon");
+    const navbarMain = document.querySelector(".navbar-main");
+    // Toggle the 'active' class on click
+    burgerIcon.addEventListener("click", () => {
+        navbarMain.classList.toggle("active");
+    });
+});
 
 async function fetchData(link) {
     try {
@@ -31,35 +63,87 @@ async function fetchData(link) {
     }
 }
 
+// Function to display diagnosis details below the card on mobile view
+function displayDiagnosisDetailsMobile(diagnosisId, diagnosis_data) {
+    const cardDiv = document.querySelector(`[data-id="${diagnosisId}"]`);
+
+    // Remove existing mobile details div if it exists
+    const existingDetailsDiv = document.querySelector(`.mobile-diagnosis-details[data-id="${diagnosisId}"]`);
+    if (existingDetailsDiv) {
+        existingDetailsDiv.remove();
+    }
+
+    cardDiv.classList.add('active-card');
+    // Create a new div for mobile diagnosis details
+    const detailsDiv = document.createElement('div');
+    detailsDiv.classList.add('mobile-diagnosis-details');
+    detailsDiv.setAttribute('data-id', diagnosisId);
+
+    // Populate the details div
+    detailsDiv.innerHTML = `
+        <p><strong>Patient ID:</strong> ${diagnosis_data.patient_id}</p>
+        <p><strong>Status:</strong> ${getStatusText(diagnosis_data.status)}</p>
+        <p><strong>Initial Diagnosis:</strong> ${diagnosis_data.initial_diagnosis}</p>
+        <p><strong>Final Diagnosis:</strong> ${diagnosis_data.final_diagnosis || 'N/A'}</p>
+        <p><strong>Remarks:</strong> ${diagnosis_data.remarks || 'N/A'}</p>
+        <p><strong>Diagnosis Date:</strong> ${diagnosis_data.diagnosis_date || 'N/A'}</p>
+        <p><strong>Area:</strong> ${diagnosis_data.area ? `${diagnosis_data.area} cm\u00B2` : '0 cm\u00B2'}</p>
+    `;
+
+    // Insert the details div after the selected card div
+    cardDiv.insertAdjacentElement('afterend', detailsDiv);
+}
+
+// Helper function to get status text
+function getStatusText(status) {
+    switch (status) {
+        case 1:
+            return 'Waiting for predictions';
+        case 2:
+            return 'Waiting for validation';
+        case 3:
+            return 'Finished';
+        default:
+            return 'Unknown status';
+    }
+}
+
 async function fetchDiagnosisDetails(diagnosisId) {
     let diagnosis_data = await fetchData(`diagnoses/${diagnosisId}`);
     
+    if (window.innerWidth <= 600) {
+        // add logic for card diagnosis info display
+        displayDiagnosisDetailsMobile(diagnosisId, diagnosis_data);
+        return;
+    }
+
+    const allCards = document.querySelectorAll('.active-card');
+
+    if (allCards){
+        allCards.forEach((card) => {
+            card.classList.remove('active-card');
+        });
+    }
+
+
+    const cardDiv = document.querySelector(`[data-id="${diagnosisId}"]`);
+    cardDiv.classList.add('active-card');
+
     if (diagnosis_data) {
         noSelectedBanner.style.display = "none";
         selectedBanner.style.display = "block";
         
         patientIDDiv.value = diagnosis_data.patient_id;
+        
+        statusDiv.textContent = getStatusText(diagnosis_data.status);
+        initialDiagnosisDiv.textContent = diagnosis_data.initial_diagnosis;
 
-        switch(diagnosis_data.status) {
-            case 1:
-                statusDiv.textContent = `Waiting for predictions`;
-            case 2:
-                statusDiv.textContent = `Waiting for validation`;
-            case 3:
-                statusDiv.textContent = `Finished`;
-            default:
-                statusDiv.textContent = `Waiting for predictions`;
-
+        if (finalDiagnosisDiv) {
+            finalDiagnosisDiv.textContent = diagnosis_data.final_diagnosis || "";
         }
         
-        initialDiagnosisDiv.textContent = diagnosis_data.initial_diagnosis;
-        if (diagnosis_data.final_diagnosis) {
-            finalDiagnosisDiv.textContent = diagnosis_data.final_diagnosis;
-        }
-        if (diagnosis_data.remarks) {
-            remarksDiv.textContent = diagnosis_data.remarks;
-        }
-        diagnosisDateDiv.textContent = diagnosis_data.diagnosis_date;
+        remarksDiv.textContent = diagnosis_data.remarks || "";
+        diagnosisDateDiv.textContent = diagnosis_data.diagnosis_date || "";
 
         if (diagnosis_data.initial_diagnosis == 'normal' || diagnosis_data.initial_diagnosis == null) {
             areaDiv.textContent = `0 cm\u00B2`;
@@ -75,8 +159,6 @@ async function fetchDiagnosisDetails(diagnosisId) {
         selectedBanner.style.display = "none"; // Hide the selected banner
     }
 }
-
-
 
 let files = [];
 

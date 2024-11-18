@@ -4,8 +4,13 @@
 <div class="results-container">
     <div class="results-main">
         <div class="results-title">
+            {% if diagnosis.final_diagnosis != 'normal'  %}
             <div class="results-intro">We're sorry to inform you that</div>
-            <div class="results-diagnosis">You have been diagnosed with a <span class="diagnosis-final">liver tumor</span>.</div>
+            <div class="results-diagnosis">You have been diagnosed with a <span class="diagnosis-final">{{ diagnosis.final_diagnosis }}</span>.</div>
+            {% else %}
+            <div class="results-intro">We're glad to inform you that</div>
+            <div class="results-diagnosis">You have a healthy <span style="color: green;">normal liver</span>.</div>
+            {% endif %}
         </div>
         <div class="results-body">
             <div class="results-images">
@@ -33,25 +38,25 @@
                 <hr>
                 <div class="results-details-block">
                     <div class="results-details-item">
-                        <div class="results-details-item-name">Initial Diagnosis:</div>
-                        <div class="results-details-item-value">tumor</div>
-                    </div>
-                    <div class="results-details-item">
                         <div class="results-details-item-name">Final Diagnosis:</div>
-                        <div class="results-details-item-value">tumor</div>
+                        <div class="results-details-item-value">{{ diagnosis.final_diagnosis }}</div>
                     </div>
                     <div class="results-details-item">
                         <div class="results-details-item-name">Date of Diagnosis:</div>
-                        <div class="results-details-item-value">October 15, 2024</div>
+                        <div class="results-details-item-value">{{ diagnosis.diagnosis_date }}</div>
                     </div>
+                    {% if diagnosis.final_diagnosis != 'normal' %}
                     <div class="results-details-item">
                         <div class="results-details-item-name">Area of Diagnosis:</div>
                         <div class="results-details-item-value">16 cm&sup2;</div>
                     </div>
+                    {% endif %}
+                    {% if diagnosis.remarks is not None %}
                     <div class="results-details-item">
                         <div class="results-details-item-name">Additional Remarks:</div>
-                        <div class="results-details-item-value">A large tumor mass is found in your liver. Please visit the hospital immediately once you received the results.</div>
+                        <div class="results-details-item-value">{{ diagnosis.remarks }}</div>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

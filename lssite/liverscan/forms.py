@@ -40,11 +40,6 @@ def validate_diagnosis(request):
     final_diagnosis = request.POST.get('final_diagnosis')
     remarks = request.POST.get('remarks')
 
-    print(request.POST)
-    print(patient_id)
-    print(final_diagnosis)
-    print(remarks)
-
     diagnosis = Diagnosis.objects.filter(patient_id=patient_id)
     
     try:
@@ -55,10 +50,6 @@ def validate_diagnosis(request):
         if diagnosis.remarks is None:
             diagnosis.remarks = remarks
         diagnosis.status = 3
-
-        
-
-        print("is this working chat?")
 
         diagnosis.save()
 

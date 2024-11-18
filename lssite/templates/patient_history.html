@@ -10,9 +10,9 @@
     
         <div class="assigned-reports-card-container">
             {% for diagnosis in diagnoses %}
-            <div class="assigned-reports-card" data-target="{{ diagnosis.id }}" onclick="fetchDiagnosisDetails('{{ diagnosis.id }}')">
+            <div class="assigned-reports-card" data-target="{{ diagnosis.id }}" data-id="{{ diagnosis.id }}" onclick="fetchDiagnosisDetails('{{ diagnosis.id }}')">
                 <div class="assigned-reports-card-content">
-                    <h2 style="display: flex; align-items: center; ">
+                    <h2 class="search-items" style="display: flex; align-items: center; ">
                         <svg  style="margin: 0px 5px 0px 5px;" width="10" height="10">
                             <circle cx="5" cy="5" r="5" fill="green" />
                         </svg>
@@ -27,7 +27,7 @@
     <div class="assigned-reports-right-panel" id="assigned-reports-right-panel">
         <div class="assigned-reports-report-details">
             <div class="form-selected" style="display: none;"><h1>Report Details</h1></div>
-            <div class="no-form-selected" style="display: block;"><h1>No patient selected.</h1></div>
+            <div class="no-form-selected" style="display: block;"><h1>Please select a patient.</h1></div>
             <div id="report-details-content">
             </div>
         </div>
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="results-details">
-                    <div class="results-details-title">Confirm Details</div>
+                    <div class="results-details-title">Details</div>
                     <hr>
                     <div class="results-details-block">
 
@@ -63,7 +63,7 @@
                             <div class="results-details-item-name ">Patient ID:</div>
                             <input type="text" name="patient_id" class="results-details-item-value patient-id-value" readonly>
                         </div>
-                        <div class="results-details-item">
+                        <div class="results-details-item" style="display: none;">
                             <div class="results-details-item-name">Status:</div>
                             <div class="results-details-item-value status-value"></div>
                         </div>

@@ -9,7 +9,9 @@ def logout_view(request):
     if request.method == "POST":
         if 'logout' in request.POST:
             logout(request)
-            return redirect('login')
+            print('\n\n can we redirect chat \n\n')
+
+            return redirect('home')
         
 def doctor_required(user):
     return user.role == 'doctor'
@@ -19,15 +21,8 @@ def home_view(request):
 
     context = {}
     context['curr_page'] = 'home'
+    context['diagnosed'] = len(Diagnosis.objects.all())
     return render(request, 'index.html', context=context)
-
-@login_required
-def results_view(request):
-    logout_view(request)
-
-    context = {}
-    context['curr_page'] = 'results'
-    return render(request, 'results.html', context=context)
 
 @user_passes_test(doctor_required)
 def doctor_results_view(request):

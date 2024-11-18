@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
+from django.core.exceptions import ValidationError
+from datetime import date, datetime
+from liverscan.models import Diagnosis
 from .forms import SignUpForm
 
 
@@ -25,19 +28,28 @@ def role_based_redirect(user):
         return 'doctor-results'
     if user.role == 'patient':
         return 'results'
+    
+def results_view(request):
+    context = {}
+    context['curr_page'] = 'results'
+    return render(request, 'results.html', context=context)
 
 def login_view(request):
     context = {}
 
     if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
+        initials = request.POST['initials']
+        birthday = request.POST['birthday']
+        diagnosis_date = request.POST['diagnosis-date']
 
-        if user is not None:
-            login(request, user)
-            return redirect(role_based_redirect(user))
-        else:
+        try:
+            diagnosis = Diagnosis.objects.get(patient_initials=initials,
+                                   birthday=birthday,
+                                     diagnosis_date=diagnosis_date)
+            context['curr_page'] = 'results'
+            context['diagnosis'] = diagnosis
+            return render(request, 'results.html', context=context)
+        except:
             context['error'] = 'Invalid login credentials.'
             return render(request, 'login.html', context=context)
     return render(request, 'login.html', context=context)

@@ -422,14 +422,18 @@ button {
         }
     }
 
+    label {
+        display: block;
+        margin-bottom: 10px;
+        color: $login-color-text;
+    }
+
     .text-input-field {
         @include form-fields;
-
-        &::placeholder {
-            color: $login-color-text;
-            opacity: 0.8;
-            font-size: 15px;
-        }
+        justify-content: flex-start;
+        color: $main-color-text;
+        opacity: 0.8;
+        font-size: 15px;
     }
 
     .login-form-remember {
@@ -711,6 +715,10 @@ button {
             font-size: 1.2rem;
         }
         
+    }
+
+    .active-card {
+        border-right: solid red;
     }
 
     &-card {
@@ -1044,5 +1052,66 @@ button {
         }
 
 
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .assigned-reports {
+        justify-content: center;
+    }
+
+    .assigned-reports-left-panel {
+        width: 90vw !important;
+    }
+    .assigned-reports-right-panel {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .burger-icon {
+        display: block !important;
+        z-index: 500 !important; 
+        margin-right: 15px !important;
+    }
+
+    .navbar-container {
+        height: 60px !important;
+        align-items: flex-end !important;
+        flex-direction: column;
+        position: fixed !important;
+        background-color: white !important;
+    }
+
+    .navbar-main {
+        display: none !important;
+        z-index: 500 !important;
+    }
+
+    .navbar-main.active {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        position: fixed !important;
+        top: 60px !important;
+        height: calc(100vh - 60px) !important;
+        background-color: $main-color-accent;
+
+        .navbar-page {
+            color: white !important;
+            font-size: 20px !important;
+            margin-top: 15px !important;
+
+            button {
+                background-color: white !important;
+                color: $main-color-accent !important;
+                margin-top: 30px !important;
+            }
+        }
+    }
+
+    .main-content {
+        margin-top: 60px !important;
     }
 }
